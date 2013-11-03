@@ -1,0 +1,46 @@
+﻿/* Original Bootstrap overrides */
+
+label {
+	font-weight: normal;
+}
+
+.container .navbar-brand {
+	margin-left: -15px;
+}
+
+.navbar-default .navbar-text {
+	color: white;
+}
+
+.navbar-text {
+	line-height: 20px; padding-top: 1px; font-size: 18px;
+}
+
+
+
+/* Metro Bootstrap fixes */
+
+.media > .pull-left {
+	margin-right: 10px;
+}
+
+
+/* My custom styles */
+
+.my-form-title {
+	margin-bottom: 20px;
+}
+
+
+.my-form-mini {
+	width: 350px;
+	margin: 0 auto;
+}
+
+
+.my-thumbnail-list a {
+	display: block;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}

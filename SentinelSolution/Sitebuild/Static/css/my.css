@@ -33,7 +33,7 @@ label {
 
 
 .my-form-mini {
-	width: 330px;
+	max-width: 330px;
 	margin: 0 auto;
 }
 

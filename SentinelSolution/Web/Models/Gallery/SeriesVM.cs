@@ -5,14 +5,10 @@
 
 	public class SeriesVM
 	{
-		public string Title { get; set; }
+		public string FolderName { get; set; }
 
 		public int Count { get; set; }
 
-		public string FolderName { get; set; }
-
 		public string ThumbnailUrl { get; set; }
-
-		public List<string> ThumbnailUrls { get; set; }
 	}
 }

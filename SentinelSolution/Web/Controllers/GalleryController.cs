@@ -1,6 +1,7 @@
 ﻿namespace Sentinel.Web.Controllers
 {
 	using System.Collections.Generic;
+	using System.IO;
 	using System.Web.Mvc;
 	using Sentinel.Web.Models.Gallery;
 
@@ -8,17 +9,37 @@
 	[Authorize]
 	public partial class GalleryController : Controller
 	{
+		private const string StorageFolderVirtualPath = "~/Photos";
+
+
 		public virtual ActionResult ViewGalleries()
 		{
 			ViewGalleriesVM model = new ViewGalleriesVM
 			{
-				Series = new List<SeriesVM>
-				{
-					new SeriesVM { Title = "2013-11-01 Sed ut perspiciatis unde omnis ", Count = 7, FolderName = "First", ThumbnailUrl = "~/Photos/First/img2.jpg" },
-					new SeriesVM { Title = "2013-11-01 Neque porro quisquam est autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae ", Count = 37, FolderName = "Second", ThumbnailUrl = "~/Photos/Second/img5.jpg" },
-					new SeriesVM { Title = "2013-11-01 Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur ", Count = 148, FolderName = "Third", ThumbnailUrl =  "~/Photos/Third/img3.jpg" }
-				}
+				Series = new List<SeriesVM>()
 			};
+
+			string storageFolderPhysicalPath = this.Server.MapPath( StorageFolderVirtualPath );
+			string[] folderPhysicalPaths = Directory.GetDirectories( storageFolderPhysicalPath );
+			foreach( string folderPhysicalPath in folderPhysicalPaths )
+			{
+				string[] filePhysicalPaths = Directory.GetFiles( folderPhysicalPath, "*.jpg" );
+
+				if( filePhysicalPaths.Length > 0 )
+				{
+					string folderName = Path.GetFileName( folderPhysicalPath );
+					string thumbnailFileName = Path.GetFileName( filePhysicalPaths[ 0 ] );
+					string thumbnailVirtualPath = Path.Combine( Path.Combine( StorageFolderVirtualPath, folderName ), thumbnailFileName );
+
+					SeriesVM series = new SeriesVM
+					{
+						FolderName = folderName,
+						Count = filePhysicalPaths.Length,
+						ThumbnailUrl = thumbnailVirtualPath
+					};
+					model.Series.Add( series );					
+				}
+			}
 
 			return View( model );
 		}

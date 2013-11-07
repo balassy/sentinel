@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link href="~/Static/bootstrap/css/metro-bootstrap.min.css" rel="stylesheet" media="screen">
-	@Styles.Render( "~/bundles/css/" )
+	@Styles.Render( "~/bundles/css" )
 
 	<title>@ViewBag.Title - Sentinel</title>
 </head>
@@ -15,6 +15,7 @@
 
 	@Scripts.Render( "~/bundles/jquery" )
 	@Scripts.Render( "~/bundles/bootstrap" )
+
 	@RenderSection( "scripts", required: false )
 </body>
 </html>

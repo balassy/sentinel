@@ -23,7 +23,7 @@
 								"~/Static/bootstrap/js/bootstrap.js",
 								"~/Static/bootstrap/js/respond.js" ) );
 
-			bundles.Add( new StyleBundle( "~/bundles/css/" ).Include(
+			bundles.Add( new StyleBundle( "~/bundles/css" ).Include(
 								"~/Static/css/my.css" ) );
 		}
 	}

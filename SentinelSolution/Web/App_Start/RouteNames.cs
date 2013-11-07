@@ -4,6 +4,7 @@
 	{
 		public const string Default = "Default";
 		public const string Login = "Login";
+		public const string Logoff = "Logoff";
 		public const string ViewGalleries = "ViewGalleries";
 		public const string ViewGallery = "ViewGallery";
 	}

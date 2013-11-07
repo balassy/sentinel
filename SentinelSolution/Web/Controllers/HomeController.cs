@@ -7,7 +7,7 @@
 
 	public partial class HomeController : Controller
 	{
-		public virtual ActionResult Index( string returnUrl )
+		public virtual ActionResult Index()
 		{
 			return this.RedirectToActionPermanent( MVC.Gallery.ViewGalleries() );
 		}

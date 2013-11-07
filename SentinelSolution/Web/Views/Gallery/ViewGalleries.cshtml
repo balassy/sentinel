@@ -7,7 +7,7 @@
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
 		<a class="navbar-brand" href="#">@ViewBag.Title</a>
-		@Html.Partial("_LoginPartial")
+		@Html.Partial( MVC.Shared.Views._LoginPartial )
 	</div>
 </nav>
 
@@ -19,12 +19,12 @@
 	@foreach( SeriesVM series in Model.Series )
 	{
 		<div class="media">
-			<a class="pull-left" href="@Url.Action( "ViewGallery", new { folderName = series.FolderName } )">
+			<a class="pull-left" href="@Url.Action( MVC.Gallery.ViewGallery( series.FolderName ) )">
 				<img class="media-object my-thumbnail" src="@Url.Content( series.ThumbnailUrl )" alt="@series.Title" />
 			</a>
 			<div class="media-body">
 				<h4 class="media-heading">
-					@Html.ActionLink( series.Title, "ViewGallery", new { folderName = series.FolderName } )
+					@Html.ActionLink( series.Title, MVC.Gallery.ViewGallery( series.FolderName ) )
 				</h4>
 				<span class="badge">@series.Count kép</span>
 			</div>

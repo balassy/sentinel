@@ -6,7 +6,7 @@
 
 
 <div class="container">
-	@using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "my-form-mini", role = "form" }))
+	@using (Html.BeginForm( MVC.Home.Login( (string) ViewBag.ReturnUrl ), FormMethod.Post, new { @class = "my-form-mini", role = "form" }))
 	{
 		@Html.AntiForgeryToken()
 

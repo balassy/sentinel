@@ -5,15 +5,15 @@
 	using Sentinel.Web.Models.Home;
 
 
-	public class HomeController : Controller
+	public partial class HomeController : Controller
 	{
-		public ActionResult Index( string returnUrl )
+		public virtual ActionResult Index( string returnUrl )
 		{
-			return this.RedirectToActionPermanent( "ViewGalleries", "Gallery" );
+			return this.RedirectToActionPermanent( MVC.Gallery.ViewGalleries() );
 		}
-		
 
-		public ActionResult Login( string returnUrl )
+
+		public virtual ActionResult Login( string returnUrl )
 		{
 			ViewBag.ReturnUrl = returnUrl;
 			return View();
@@ -22,7 +22,7 @@
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Login( LoginVM model, string returnUrl )
+		public virtual ActionResult Login( LoginVM model, string returnUrl )
 		{
 			if( ModelState.IsValid )
 			{
@@ -33,7 +33,7 @@
 					FormsAuthentication.SetAuthCookie( model.UserName, model.RememberMe );
 					return Url.IsLocalUrl( returnUrl )
 						? (ActionResult) Redirect( returnUrl )
-						: RedirectToAction( "ViewGalleries", "Gallery" );
+						: RedirectToAction( MVC.Gallery.ViewGalleries() );
 				}
 				else
 				{
@@ -49,10 +49,10 @@
 		[HttpPost]
 		[Authorize]
 		[ValidateAntiForgeryToken]
-		public ActionResult LogOff()
+		public virtual ActionResult LogOff()
 		{
 			FormsAuthentication.SignOut();
-			return RedirectToAction( "Login", "Home" );
+			return RedirectToAction( MVC.Home.Login() );
 		}
 
 	}

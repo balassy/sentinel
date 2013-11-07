@@ -6,9 +6,9 @@
 
 
 	[Authorize]
-	public class GalleryController : Controller
+	public partial class GalleryController : Controller
 	{
-		public ActionResult ViewGalleries()
+		public virtual ActionResult ViewGalleries()
 		{
 			ViewGalleriesVM model = new ViewGalleriesVM
 			{
@@ -24,7 +24,7 @@
 		}
 
 
-		public ActionResult ViewGallery( string folderName )
+		public virtual ActionResult ViewGallery( string folderName )
 		{
 			return View();
 		}

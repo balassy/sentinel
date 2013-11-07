@@ -13,6 +13,10 @@ namespace Sentinel.Web
 		{
 			routes.IgnoreRoute( "{resource}.axd/{*pathInfo}" );
 
+			routes.MapRoute( "Login", "Bejelentkezes", new { controller = "Home", action = "Login" } );
+			routes.MapRoute( "ViewGalleries", "Keptar", new { controller = "Gallery", action = "ViewGalleries" } );
+			routes.MapRoute( "ViewGallery", "Keptar/{folderName}", new { controller = "Gallery", action = "ViewGallery" } );
+
 			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",

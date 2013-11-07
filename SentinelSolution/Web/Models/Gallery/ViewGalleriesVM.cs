@@ -3,7 +3,7 @@
 	using System.Collections.Generic;
 
 
-	public class IndexVM
+	public class ViewGalleriesVM
 	{
 		public List<SeriesVM> Series { get; set; }		
 	}

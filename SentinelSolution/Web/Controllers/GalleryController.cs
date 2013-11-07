@@ -8,9 +8,9 @@
 	[Authorize]
 	public class GalleryController : Controller
 	{
-		public ActionResult Index()
+		public ActionResult ViewGalleries()
 		{
-			IndexVM model = new IndexVM
+			ViewGalleriesVM model = new ViewGalleriesVM
 			{
 				Series = new List<SeriesVM>
 				{

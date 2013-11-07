@@ -9,7 +9,7 @@
 	{
 		public ActionResult Index( string returnUrl )
 		{
-			return this.RedirectToActionPermanent( "Index", "Gallery" );
+			return this.RedirectToActionPermanent( "ViewGalleries", "Gallery" );
 		}
 		
 
@@ -33,7 +33,7 @@
 					FormsAuthentication.SetAuthCookie( model.UserName, model.RememberMe );
 					return Url.IsLocalUrl( returnUrl )
 						? (ActionResult) Redirect( returnUrl )
-						: RedirectToAction( "Index", "Gallery" );
+						: RedirectToAction( "ViewGalleries", "Gallery" );
 				}
 				else
 				{

@@ -129,7 +129,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Gallery\IndexVM.cs" />
+    <Compile Include="Models\Gallery\ViewGalleriesVM.cs" />
     <Compile Include="Models\Home\LoginVM.cs" />
     <Compile Include="Models\Gallery\SeriesVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -187,7 +187,7 @@
     <Content Include="Static\lib\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Gallery\Index.cshtml" />
+    <Content Include="Views\Gallery\ViewGalleries.cshtml" />
     <Content Include="Static\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Static\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Static\bootstrap\fonts\glyphicons-halflings-regular.woff" />

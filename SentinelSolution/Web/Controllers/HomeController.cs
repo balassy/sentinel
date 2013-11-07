@@ -1,9 +1,8 @@
-﻿using System.Web.Security;
-using Sentinel.Web.Models;
-
-namespace Sentinel.Web.Controllers
+﻿namespace Sentinel.Web.Controllers
 {
 	using System.Web.Mvc;
+	using System.Web.Security;
+	using Sentinel.Web.Models.Home;
 
 
 	public class HomeController : Controller

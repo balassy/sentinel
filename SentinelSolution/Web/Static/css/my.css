@@ -94,3 +94,12 @@ input[type="checkbox"].input-validation-error
 	margin-right: 10px;
 	margin-bottom: 10px;
 }
+
+.my-thumbnail-list img 
+{
+	height: 60px;	
+}
+
+.media .my-thumbnail {
+	height: 60px;
+}

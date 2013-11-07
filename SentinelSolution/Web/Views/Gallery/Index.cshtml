@@ -1,106 +1,33 @@
-﻿@{
+﻿@using Sentinel.Web.Models.Gallery
+@model Sentinel.Web.Models.Gallery.IndexVM
+@{
 	ViewBag.Title = "Képtár";
 }
 
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container">
-			<a class="navbar-brand" href="#">Képtár</a>
-			@Html.Partial("_LoginPartial")
-		</div>
-	</nav>
-
+<nav class="navbar navbar-default" role="navigation">
 	<div class="container">
-		<div class="page-header">
-			<h1>Sorozatok</h1>
-		</div>
-		
-		<h2>Legújabb sorozatok</h2>
-		
-		<h3>
-			<a href="Photo.html">
-				2013-11-01 Sed ut perspiciatis unde omnis
-				<span class="badge">120 kép</span>
-			</a>
-		</h3>	
-		<p class="my-thumbnail-list clearfix">
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-		</p>
+		<a class="navbar-brand" href="#">@ViewBag.Title</a>
+		@Html.Partial("_LoginPartial")
+	</div>
+</nav>
 
-		<h3>
-			<a href="Photo.html">
-				2013-10-30 Sed ut perspiciatis unde omnis
-				<span class="badge">8 kép</span>
-			</a>
-		</h3>
-		<p class="my-thumbnail-list clearfix">
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-		</p>
+<div class="container">
+	<div class="page-header">
+		<h1>Sorozatok</h1>
+	</div>
 		
-		<h3>
-			<a href="Photo.html">
-				2013-10-22 Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur
-				<span class="badge">38 kép</span>
-			</a>
-		</h3>
-		<p class="my-thumbnail-list clearfix">
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-			<a href="Photo.html"><img src="Static/dummy/dummy-thumbnail.png" alt="" /></a>
-		</p>
-
-	
-		
-		<h2>Régebbi sorozatok</h2>
-		
+	@foreach( SeriesVM series in Model.Series )
+	{
 		<div class="media">
-			<a class="pull-left" href="#">
-				<img class="media-object" src="Static/dummy/dummy-thumbnail.png" alt="" />
+			<a class="pull-left" href="@Url.Action( "ViewGallery", new { folderName = series.FolderName } )">
+				<img class="media-object my-thumbnail" src="@Url.Content( series.ThumbnailUrl )" alt="@series.Title" />
 			</a>
 			<div class="media-body">
 				<h4 class="media-heading">
-					<a href="Photo.html">2013-11-01 Sed ut perspiciatis unde omnis</a>
+					@Html.ActionLink( series.Title, "ViewGallery", new { folderName = series.FolderName } )
 				</h4>
-				<span class="badge">3 kép</span>
+				<span class="badge">@series.Count kép</span>
 			</div>
-		</div>
-		
-		<div class="media">
-			<a class="pull-left" href="#">
-				<img class="media-object" src="Static/dummy/dummy-thumbnail.png" alt="" />
-			</a>
-			<div class="media-body">
-				<h4 class="media-heading">
-					<a href="Photo.html">2013-11-01 Neque porro quisquam est autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae</a>
-				</h4>
-				<span class="badge">133 kép</span>
-			</div>
-		</div>
-		
-		<div class="media">
-			<a class="pull-left" href="#">
-				<img class="media-object" src="Static/dummy/dummy-thumbnail.png" alt="" />
-			</a>
-			<div class="media-body">
-				<h4 class="media-heading">
-					<a href="Photo.html">2013-11-01 Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur</a>
-				</h4>
-				<span class="badge">27 kép</span>
-			</div>
-		</div>
-	</div> <!-- /container -->
+		</div>			
+	}		
+</div> <!-- /container -->

@@ -1,4 +1,4 @@
-﻿namespace Sentinel.Web.Models
+﻿namespace Sentinel.Web.Models.Home
 {
 	using System.ComponentModel.DataAnnotations;
 

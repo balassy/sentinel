@@ -5,16 +5,16 @@
 
 	public class LoginVM
 	{
-		[Required]
-		[Display( Name = "User name" )]
+		[Required( ErrorMessage = "Add meg a felhasználónevet!" )]
+		[Display( Name = "Felhasználónév" )]
 		public string UserName { get; set; }
 
-		[Required]
+		[Required( ErrorMessage = "Add meg a jelszót!" )]
 		[DataType( DataType.Password )]
-		[Display( Name = "Password" )]
+		[Display( Name = "Jelszó" )]
 		public string Password { get; set; }
 
-		[Display( Name = "Remember me?" )]
+		[Display( Name = "Emlékezz rám" )]
 		public bool RememberMe { get; set; }
 	}
 }

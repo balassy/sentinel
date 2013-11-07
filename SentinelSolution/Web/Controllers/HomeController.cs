@@ -38,7 +38,7 @@ namespace Sentinel.Web.Controllers
 				}
 				else
 				{
-					ModelState.AddModelError( "", "Invalid username or password." );
+					ModelState.AddModelError( "", "Ajjaj, így nem fogsz bejutni!" );
 				}
 			}
 

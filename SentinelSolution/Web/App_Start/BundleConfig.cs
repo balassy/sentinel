@@ -23,8 +23,7 @@
 								"~/Static/bootstrap/js/bootstrap.js",
 								"~/Static/bootstrap/js/respond.js" ) );
 
-			bundles.Add( new StyleBundle( "~/bundles/static/bootstrap/css/" ).Include(
-								"~/Static/bootstrap/css/metro-bootstrap.min.css",
+			bundles.Add( new StyleBundle( "~/bundles/css/" ).Include(
 								"~/Static/css/my.css" ) );
 		}
 	}

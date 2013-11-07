@@ -1,21 +1,6 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+﻿@using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm" }))
 {
-    using (Html.BeginForm("LogOff", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
+	@Html.AntiForgeryToken()
+	<a href="javascript:document.getElementById('logoutForm').submit()" class="btn navbar-btn pull-right">Kijelentkezés</a>
+}
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            Hello @User.Identity.GetUserName() "!"
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
-    }
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Log in", "Login", "Home", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}

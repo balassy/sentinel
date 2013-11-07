@@ -1,0 +1,90 @@
+﻿/* Original Bootstrap overrides */
+
+label
+{
+	font-weight: normal;
+}
+
+.container .navbar-brand
+{
+	margin-left: -15px;
+}
+
+.navbar-default .navbar-text
+{
+	color: white;
+}
+
+.navbar-text
+{
+	line-height: 20px;
+	padding-top: 1px;
+	font-size: 18px;
+}
+
+
+
+/* Metro Bootstrap fixes */
+
+.media > .pull-left
+{
+	margin-right: 10px;
+}
+
+
+
+/* ASP.NET validation helpers */
+
+.field-validation-error
+{
+	color: #b94a48;
+}
+
+.field-validation-valid
+{
+	display: none;
+}
+
+input.input-validation-error
+{
+	border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error
+{
+	border: 0 none;
+}
+
+.validation-summary-errors
+{
+	color: #b94a48;
+}
+
+.validation-summary-valid
+{
+	display: none;
+}
+
+
+/* My custom styles */
+
+.my-form-title
+{
+	margin-bottom: 20px;
+}
+
+
+.my-form-mini
+{
+	max-width: 330px;
+	margin: 0 auto;
+}
+
+
+.my-thumbnail-list a
+{
+	display: block;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}

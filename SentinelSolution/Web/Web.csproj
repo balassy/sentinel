@@ -166,11 +166,11 @@
     <Content Include="Photos\Second\img2.jpg" />
     <Content Include="Photos\Second\img3.jpg" />
     <Content Include="Photos\Second\img5.jpg" />
-    <Content Include="Photos\Third\img1.jpg" />
+    <Content Include="Photos\Third\img5.jpg" />
     <Content Include="Photos\Third\img2.jpg" />
     <Content Include="Photos\Third\img3.jpg" />
     <Content Include="Photos\Third\img4.jpg" />
-    <Content Include="Photos\Third\img5.jpg" />
+    <Content Include="Photos\Third\img1.jpg" />
     <Content Include="Static\lib\jquery-1.10.2.js" />
     <Content Include="Static\lib\jquery-1.10.2.min.js" />
     <None Include="Static\lib\jquery.validate-vsdoc.js" />

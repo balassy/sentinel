@@ -157,6 +157,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Photos\web.config" />
+    <None Include="Properties\PublishProfiles\Nimbus.pubxml" />
     <None Include="Static\lib\jquery-1.10.2.intellisense.js" />
     <Content Include="Photos\First\img1.jpg" />
     <Content Include="Photos\First\img2.jpg" />

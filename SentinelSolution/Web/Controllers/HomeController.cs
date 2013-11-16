@@ -26,7 +26,11 @@
 		{
 			if( ModelState.IsValid )
 			{
+// CS0618: 'System.Web.Security.FormsAuthentication.Authenticate(string, string)' is obsolete: 'The recommended alternative is to use the Membership APIs, such as Membership.ValidateUser. For more information, see http://go.microsoft.com/fwlink/?LinkId=252463.'
+// NOTE: This is required, becuase the Membership API does not support storing the credentials in the web.config.
+#pragma warning disable 618
 				bool isAuthenticated = FormsAuthentication.Authenticate( model.UserName, model.Password );
+#pragma warning restore 618
 
 				if( isAuthenticated )
 				{

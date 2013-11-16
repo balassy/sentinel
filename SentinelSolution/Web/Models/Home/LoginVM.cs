@@ -5,6 +5,13 @@
 
 	public class LoginVM
 	{
+		public LoginVM()
+		{
+			// NOTE: If you want to use multiple users, remove this constructor.
+			this.UserName = "demo";
+		}
+
+
 		[Required( ErrorMessage = "Add meg a felhasználónevet!" )]
 		[Display( Name = "Felhasználónév" )]
 		public string UserName { get; set; }

@@ -22,7 +22,7 @@
 			};
 
 			string storageFolderPhysicalPath = this.Server.MapPath( StorageFolderVirtualPath );
-			string[] folderPhysicalPaths = Directory.GetDirectories( storageFolderPhysicalPath );
+			IOrderedEnumerable<string> folderPhysicalPaths = Directory.GetDirectories( storageFolderPhysicalPath ).OrderByDescending( p => p );
 			foreach( string folderPhysicalPath in folderPhysicalPaths )
 			{
 				string[] filePhysicalPaths = Directory.GetFiles( folderPhysicalPath, "*.jpg" );

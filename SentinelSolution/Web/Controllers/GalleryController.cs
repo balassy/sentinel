@@ -25,7 +25,7 @@
 			IOrderedEnumerable<string> folderPhysicalPaths = Directory.GetDirectories( storageFolderPhysicalPath ).OrderByDescending( p => p );
 			foreach( string folderPhysicalPath in folderPhysicalPaths )
 			{
-				string[] filePhysicalPaths = Directory.GetFiles( folderPhysicalPath, "*.jpg" );
+				string[] filePhysicalPaths = Directory.GetFiles( folderPhysicalPath, "*.*" ).Where( p => p.EndsWith( ".jpg" ) || p.EndsWith( ".png" ) ).ToArray();
 
 				if( filePhysicalPaths.Length > 0 )
 				{
@@ -85,7 +85,9 @@
 			};
 
 			// Enumerate the files in the requested folder.
-			IEnumerable<string> photoUrls = Directory.EnumerateFiles( folderPhysicalPath, "*.jpg" ).Select( filePhysicalPath => Path.Combine( folderVirtualPath, Path.GetFileName( filePhysicalPath ) ) );
+			IEnumerable<string> photoUrls = Directory.GetFiles( folderPhysicalPath, "*.*" )
+				.Where( p => p.EndsWith( ".jpg" ) || p.EndsWith( ".png" ) )
+				.Select( filePhysicalPath => Path.Combine( folderVirtualPath, Path.GetFileName( filePhysicalPath ) ) );
 			model.PhotoUrls.AddRange( photoUrls );
 
 			return View( model );

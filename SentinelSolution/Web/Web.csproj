@@ -139,6 +139,7 @@
     <Compile Include="HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Gallery\ViewGalleryVM.cs" />
     <Compile Include="Models\Gallery\ViewGalleriesVM.cs" />
     <Compile Include="Models\Home\LoginVM.cs" />
     <Compile Include="Models\Gallery\SeriesVM.cs" />
@@ -217,6 +218,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Gallery\ViewGallery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

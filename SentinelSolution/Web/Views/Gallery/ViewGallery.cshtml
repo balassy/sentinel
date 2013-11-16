@@ -1,0 +1,26 @@
+﻿@model Sentinel.Web.Models.Gallery.ViewGalleryVM
+
+@{
+	ViewBag.Title = this.Model.Title;
+}
+
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<a class="navbar-brand" href="@Url.Action( MVC.Gallery.ViewGalleries() )">Képtár</a>
+		@Html.Partial( MVC.Shared.Views._LoginPartial )
+	</div>
+</nav>
+
+<div class="container">
+	<div class="page-header">
+		<h1>@Model.Title</h1>
+	</div>
+
+	@foreach( string photoUrl in Model.PhotoUrls )
+	{
+		<p>
+			<img src="@Url.Content( photoUrl )" class="img-responsive" title="@photoUrl" />
+		</p>
+	}
+
+</div> <!-- /container -->

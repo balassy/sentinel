@@ -118,15 +118,6 @@ namespace Links
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class dummy {
-            private const string URLPATH = "~/Static/dummy";
-            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
-            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string dummy_photo_png = Url("dummy-photo.png");
-            public static readonly string dummy_thumbnail_png = Url("dummy-thumbnail.png");
-        }
-    
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class js {
             private const string URLPATH = "~/Static/js";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }

@@ -192,8 +192,6 @@
     <Content Include="Static\bootstrap\js\bootstrap.js" />
     <Content Include="Static\bootstrap\js\bootstrap.min.js" />
     <Content Include="Static\css\my.css" />
-    <Content Include="Static\dummy\dummy-photo.png" />
-    <Content Include="Static\dummy\dummy-thumbnail.png" />
     <None Include="T4MVC.tt.settings.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

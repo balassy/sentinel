@@ -97,8 +97,10 @@ namespace Sentinel.Web.Controllers
             public class _ViewNamesClass
             {
                 public readonly string ViewGalleries = "ViewGalleries";
+                public readonly string ViewGallery = "ViewGallery";
             }
             public readonly string ViewGalleries = "~/Views/Gallery/ViewGalleries.cshtml";
+            public readonly string ViewGallery = "~/Views/Gallery/ViewGallery.cshtml";
         }
     }
 

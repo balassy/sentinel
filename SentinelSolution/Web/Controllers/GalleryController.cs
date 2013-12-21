@@ -94,7 +94,7 @@
 
 			// Enumerate the files in the requested folder.
 			IEnumerable<string> photoUrls = Directory.GetFiles( folderPhysicalPath, "*.*" )
-				.Where( p => p.EndsWith( ".jpg", StringComparison.OrdinalIgnoreCase ) || p.EndsWith( ".png", StringComparison.OrdinalIgnoreCase ) )
+				.Where( p => ( p.EndsWith( ".jpg", StringComparison.OrdinalIgnoreCase ) || p.EndsWith( ".png", StringComparison.OrdinalIgnoreCase ) ) && !p.EndsWith( "folder.jpg", StringComparison.OrdinalIgnoreCase ) )
 				.Select( filePhysicalPath => Path.Combine( folderVirtualPath, Path.GetFileName( filePhysicalPath ) ) );
 			model.PhotoUrls.AddRange( photoUrls );
 

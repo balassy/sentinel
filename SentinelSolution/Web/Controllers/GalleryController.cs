@@ -32,7 +32,13 @@
 				if( filePhysicalPaths.Length > 0 )
 				{
 					string folderName = Path.GetFileName( folderPhysicalPath );
-					string thumbnailFileName = Path.GetFileName( filePhysicalPaths[ 0 ] );
+
+					string thumbnailPhysicalPath = Path.Combine( folderPhysicalPath, "folder.jpg" );
+					thumbnailPhysicalPath = filePhysicalPaths.Contains( thumbnailPhysicalPath )
+						? thumbnailPhysicalPath
+						: filePhysicalPaths[ 0 ];
+					string thumbnailFileName = Path.GetFileName( thumbnailPhysicalPath );
+
 					string thumbnailVirtualPath = Path.Combine( Path.Combine( StorageFolderVirtualPath, folderName ), thumbnailFileName );
 
 					SeriesVM series = new SeriesVM

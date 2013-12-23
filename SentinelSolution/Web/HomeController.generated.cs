@@ -68,7 +68,7 @@ namespace Sentinel.Web.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Login = "Login";
-            public readonly string LogOff = "LogOff";
+            public readonly string Logoff = "Logoff";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -76,7 +76,7 @@ namespace Sentinel.Web.Controllers
         {
             public const string Index = "Index";
             public const string Login = "Login";
-            public const string LogOff = "LogOff";
+            public const string Logoff = "Logoff";
         }
 
 
@@ -140,12 +140,12 @@ namespace Sentinel.Web.Controllers
             return callInfo;
         }
 
-        partial void LogOffOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void LogoffOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
-        public override System.Web.Mvc.ActionResult LogOff()
+        public override System.Web.Mvc.ActionResult Logoff()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LogOff);
-            LogOffOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Logoff);
+            LogoffOverride(callInfo);
             return callInfo;
         }
 

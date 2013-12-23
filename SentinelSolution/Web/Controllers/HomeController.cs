@@ -59,7 +59,7 @@
 		[HttpPost]
 		[Authorize]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult LogOff()
+		public virtual ActionResult Logoff()
 		{
 			this.AuthenticationService.SignOut();
 

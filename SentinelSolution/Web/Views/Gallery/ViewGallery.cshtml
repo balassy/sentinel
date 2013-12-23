@@ -1,4 +1,5 @@
-﻿@model Sentinel.Web.Models.Gallery.ViewGalleryVM
+﻿@using Sentinel.Web.Resources.Gallery
+@model Sentinel.Web.Models.Gallery.ViewGalleryVM
 
 @{
 	ViewBag.Title = this.Model.Title;
@@ -6,7 +7,7 @@
 
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
-		<a class="navbar-brand" href="@Url.Action( MVC.Gallery.ViewGalleries() )"><span class="glyphicon glyphicon-chevron-left"></span> Vissza a sorozatokhoz</a>
+		<a class="navbar-brand" href="@Url.Action( MVC.Gallery.ViewGalleries() )"><span class="glyphicon glyphicon-chevron-left"></span> @ViewGalleryRes.Back</a>
 		@Html.Partial( MVC.Shared.Views._LoginPartial )
 	</div>
 </nav>

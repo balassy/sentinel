@@ -1,7 +1,9 @@
 ﻿@using Sentinel.Web.Models.Gallery
-@model Sentinel.Web.Models.Gallery.ViewGalleriesVM
+@using Sentinel.Web.Resources.Gallery
+
+@model ViewGalleriesVM
 @{
-	ViewBag.Title = "Képtár";
+	ViewBag.Title = ViewGalleriesRes.Title;
 }
 
 <nav class="navbar navbar-default" role="navigation">
@@ -13,7 +15,7 @@
 
 <div class="container">
 	<div class="page-header">
-		<h1>Sorozatok</h1>
+		<h1>@ViewGalleriesRes.PageHeading</h1>
 	</div>
 		
 	@foreach( SeriesVM series in Model.Series )
@@ -26,7 +28,7 @@
 				<h4 class="media-heading">
 					@Html.ActionLink( series.FolderName, MVC.Gallery.ViewGallery( series.FolderName ) )
 				</h4>
-				<span class="badge">@series.Count kép</span>
+				<span class="badge">@series.Count @ViewGalleriesRes.ImageCount</span>
 			</div>
 		</div>			
 	}		

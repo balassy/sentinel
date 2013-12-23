@@ -5,6 +5,7 @@
 	using System.Web.Mvc;
 	using Sentinel.Web.Models.Home;
 	using Sentinel.Web.Services;
+	using Sentinel.Web.Resources.Home;
 
 	using Ninject;
 
@@ -46,7 +47,7 @@
 				}
 				else
 				{
-					this.ModelState.AddModelError( String.Empty, "Ajjaj, így nem fogsz bejutni!" );
+					this.ModelState.AddModelError( String.Empty, LoginRes.InvalidCredentialsError );
 				}
 			}
 

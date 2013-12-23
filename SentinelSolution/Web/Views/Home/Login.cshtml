@@ -1,7 +1,8 @@
-﻿@model Sentinel.Web.Models.Home.LoginVM
+﻿@using Sentinel.Web.Resources.Home
+@model Sentinel.Web.Models.Home.LoginVM
 
 @{
-	ViewBag.Title = "Jelentkezz be!";
+	ViewBag.Title = LoginRes.Title;
 }
 
 
@@ -25,9 +26,9 @@
 
 		<div class="form-group input-group">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-lock" title="Jelszó"></span>
+				<span class="glyphicon glyphicon-lock" title="@LoginRes.Password"></span>
 			</span>
-			@Html.PasswordFor( m => m.Password, new { @class = "form-control input-lg", placeholder = "Jelszó", required = "required", autofocus = "autofocus" } )
+			@Html.PasswordFor( m => m.Password, new { @class = "form-control input-lg", placeholder = LoginRes.Password, required = "required", autofocus = "autofocus" } )
 		</div>
 			
 		<div class="form-group">
@@ -38,7 +39,7 @@
 		</div>
 			
 		<div class="form-group">
-			<input type="submit" value="Bejelentkezés" class="btn btn-lg btn-primary btn-block" />
+			<input type="submit" value="@LoginRes.SignIn" class="btn btn-lg btn-primary btn-block" />
 		</div>	
 	}
 </div>

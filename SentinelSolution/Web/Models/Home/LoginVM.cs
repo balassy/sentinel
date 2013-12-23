@@ -1,4 +1,6 @@
-﻿namespace Sentinel.Web.Models.Home
+﻿using Sentinel.Web.Resources.Home;
+
+namespace Sentinel.Web.Models.Home
 {
 	using System.ComponentModel.DataAnnotations;
 
@@ -12,16 +14,16 @@
 		}
 
 
-		[Required( ErrorMessage = "Add meg a felhasználónevet!" )]
-		[Display( Name = "Felhasználónév" )]
+		[Display( ResourceType = typeof( LoginRes ), Name = "UserName" )]
+		[Required( ErrorMessageResourceType = typeof( LoginRes ), ErrorMessageResourceName = "UserNameRequired" )]
 		public string UserName { get; set; }
 
-		[Required( ErrorMessage = "Add meg a jelszót!" )]
 		[DataType( DataType.Password )]
-		[Display( Name = "Jelszó" )]
+		[Display( ResourceType = typeof( LoginRes ), Name = "Password" )]
+		[Required( ErrorMessageResourceType = typeof( LoginRes ), ErrorMessageResourceName = "PasswordRequired" )]
 		public string Password { get; set; }
 
-		[Display( Name = "Emlékezz rám" )]
+		[Display( ResourceType = typeof( LoginRes ), Name = "RememberMe" )]
 		public bool RememberMe { get; set; }
 	}
 }

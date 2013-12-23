@@ -59,6 +59,7 @@ namespace Sentinel.Web.App_Start
 			Contract.Requires( kernel != null );
 
 			kernel.Bind<IAuthenticationService>().To<AuthenticationService>();
+			kernel.Bind<IImageService>().To<ImageService>();
 		}
 	}
 }

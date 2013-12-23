@@ -7,16 +7,16 @@
 	using System.Web;
 	using Sentinel.Web.Models.Gallery;
 
+	using Ninject;
+
 
 	/// <summary>
-	/// Service component which encapsulate the details of the image file operations.
+	/// Service component which encapsulates the details of the image file operations.
 	/// </summary>
 	public class ImageService : IImageService
 	{
-		/// <summary>
-		/// The application realtive virtual path of the folder which contains the galleries.
-		/// </summary>
-		private const string StorageFolderVirtualPath = "~/Photos";
+		[Inject]
+		public IConfigService ConfigService { get; set; }
 
 
 		/// <summary>
@@ -31,7 +31,7 @@
 			};
 
 			// Get the full physical path of the folder which contains the galleries (eg. C:\inetpub\wwwroot\Photos).
-			string storageFolderPhysicalPath = HttpContext.Current.Server.MapPath(  ImageService.StorageFolderVirtualPath );
+			string storageFolderPhysicalPath = HttpContext.Current.Server.MapPath( this.ConfigService.StorageFolderVirtualPath );
 
 			// Get the full physical paths of each galleries (eg. list of C:\inetpub\wwwroot\Photos\First, C:\inetpub\wwwroot\Photos\Second etc.).
 			IOrderedEnumerable<string> folderPhysicalPaths = Directory.GetDirectories( storageFolderPhysicalPath ).OrderByDescending( p => p );
@@ -62,7 +62,7 @@
 					string thumbnailFileName = Path.GetFileName( thumbnailPhysicalPath );
 
 					// Get the application relative virtual path of the gallery thumbnail image (eg. ~/Photos/First/img1.jpg);
-					string thumbnailVirtualPath = Path.Combine( Path.Combine( StorageFolderVirtualPath, folderName ), thumbnailFileName );
+					string thumbnailVirtualPath = Path.Combine( Path.Combine( this.ConfigService.StorageFolderVirtualPath, folderName ), thumbnailFileName );
 
 					// Build the returned model item for the gallery.
 					SeriesVM series = new SeriesVM
@@ -99,7 +99,7 @@
 			}
 
 			// Get the application relative virtual path of the gallery folder (eg. ~/Photos/First).
-			string folderVirtualPath = Path.Combine( ImageService.StorageFolderVirtualPath, folderName );
+			string folderVirtualPath = Path.Combine( this.ConfigService.StorageFolderVirtualPath, folderName );
 
 			// Get the full physical path of the gallery folder (eg. C:\inetpub\wwwroot\Photos\First).
 			string folderPhysicalPath = HttpContext.Current.Server.MapPath( folderVirtualPath );
@@ -111,7 +111,7 @@
 			}
 
 			// Integrity check: the requested folder must be the direct child of the storage folder.
-			string storagePhysicalPath = HttpContext.Current.Server.MapPath( StorageFolderVirtualPath );
+			string storagePhysicalPath = HttpContext.Current.Server.MapPath( this.ConfigService.StorageFolderVirtualPath );
 			string folderParentPhysicalPath = Directory.GetParent( folderPhysicalPath ).FullName;
 			if( !folderParentPhysicalPath.Equals( storagePhysicalPath, StringComparison.OrdinalIgnoreCase ) )
 			{

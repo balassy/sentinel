@@ -8,7 +8,7 @@
 	/// <summary>
 	/// Service component that encapsulates the details of the authentication.
 	/// </summary>
-	public class AuthenticationService
+	public class AuthenticationService : IAuthenticationService
 	{
 		/// <summary>
 		/// Logs in the user.
@@ -38,7 +38,7 @@
 
 
 		/// <summary>
-		/// Logs out the currently logged in user.
+		/// Logs out the currently authenticated in user.
 		/// </summary>
 		/// <remarks>
 		/// This method can be called without any side effect even if currently the user is not logged in.

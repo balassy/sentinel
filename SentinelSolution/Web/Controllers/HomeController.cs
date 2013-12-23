@@ -1,15 +1,20 @@
-﻿using System.Diagnostics.Contracts;
-
-namespace Sentinel.Web.Controllers
+﻿namespace Sentinel.Web.Controllers
 {
+	using System;
+	using System.Diagnostics.Contracts;
 	using System.Web.Mvc;
-	using System.Web.Security;
 	using Sentinel.Web.Models.Home;
 	using Sentinel.Web.Services;
+
+	using Ninject;
 
 
 	public partial class HomeController : Controller
 	{
+		[Inject]
+		public IAuthenticationService AuthenticationService { get; set; }
+
+
 		public virtual ActionResult Index()
 		{
 			return this.RedirectToActionPermanent( MVC.Gallery.ViewGalleries() );
@@ -18,8 +23,8 @@ namespace Sentinel.Web.Controllers
 
 		public virtual ActionResult Login( string returnUrl )
 		{
-			ViewBag.ReturnUrl = returnUrl;
-			return View();
+			this.ViewBag.ReturnUrl = returnUrl;
+			return this.View();
 		}
 
 
@@ -29,24 +34,23 @@ namespace Sentinel.Web.Controllers
 		{
 			Contract.Requires( model != null );
 
-			if( ModelState.IsValid )
+			if( this.ModelState.IsValid )
 			{
-				AuthenticationService auth = new AuthenticationService();
-				bool isAuthenticated = auth.SignIn( model.UserName, model.Password, model.RememberMe );
+				bool isAuthenticated = this.AuthenticationService.SignIn( model.UserName, model.Password, model.RememberMe );
 
 				if( isAuthenticated )
 				{
-					return Url.IsLocalUrl( returnUrl )
-						? (ActionResult) Redirect( returnUrl )
-						: RedirectToAction( MVC.Gallery.ViewGalleries() );
+					return this.Url.IsLocalUrl( returnUrl )
+						? (ActionResult) this.Redirect( returnUrl )
+						: this.RedirectToAction( MVC.Gallery.ViewGalleries() );
 				}
 				else
 				{
-					ModelState.AddModelError( "", "Ajjaj, így nem fogsz bejutni!" );
+					this.ModelState.AddModelError( String.Empty, "Ajjaj, így nem fogsz bejutni!" );
 				}
 			}
 
-			return View( model );
+			return this.View( model );
 		}
 
 
@@ -56,10 +60,9 @@ namespace Sentinel.Web.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult LogOff()
 		{
-			AuthenticationService auth = new AuthenticationService();
-			auth.SignOut();
+			this.AuthenticationService.SignOut();
 
-			return RedirectToAction( MVC.Home.Login() );
+			return this.RedirectToAction( MVC.Home.Login() );
 		}
 
 	}

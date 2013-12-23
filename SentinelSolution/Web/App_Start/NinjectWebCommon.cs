@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using Sentinel.Web.Services;
 
 [assembly: WebActivator.PreApplicationStartMethod( typeof( Sentinel.Web.App_Start.NinjectWebCommon ), "Start" )]
@@ -55,6 +56,8 @@ namespace Sentinel.Web.App_Start
 		/// <param name="kernel">The kernel.</param>
 		private static void RegisterServices( IKernel kernel )
 		{
+			Contract.Requires( kernel != null );
+
 			kernel.Bind<IAuthenticationService>().To<AuthenticationService>();
 		}
 	}

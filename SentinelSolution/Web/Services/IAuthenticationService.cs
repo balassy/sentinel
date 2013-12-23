@@ -1,8 +1,12 @@
 ﻿namespace Sentinel.Web.Services
 {
+	using System.Diagnostics.Contracts;
+
+
 	/// <summary>
 	/// Contract for service components which encapsulate the details of the authentication.
 	/// </summary>
+	[ContractClass( typeof( AuthenticationServiceContract ) )]
 	public interface IAuthenticationService
 	{
 		/// <summary>

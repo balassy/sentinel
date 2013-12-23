@@ -1,7 +1,6 @@
 ﻿namespace Sentinel.Web.Services
 {
 	using System;
-	using System.Diagnostics.Contracts;
 	using System.Web.Security;
 
 
@@ -19,9 +18,6 @@
 		/// <returns><c>True</c> if the specified <paramref name="userName"/> and <paramref name="password"/> is correct, and the user successfully authenticated.</returns>
 		public bool SignIn( string userName, string password, bool isPersistent )
 		{
-			Contract.Requires( !String.IsNullOrEmpty( userName ) );
-			Contract.Requires( !String.IsNullOrEmpty( password ) );
-
 // CS0618: 'System.Web.Security.FormsAuthentication.Authenticate(string, string)' is obsolete: 'The recommended alternative is to use the Membership APIs, such as Membership.ValidateUser. For more information, see http://go.microsoft.com/fwlink/?LinkId=252463.'
 // NOTE: This is required, becuase the Membership API does not support storing the credentials in the web.config.
 #pragma warning disable 618

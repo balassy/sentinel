@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Diagnostics.Contracts;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Sentinel.Web
@@ -7,6 +8,8 @@ namespace Sentinel.Web
 	{
 		public static void RegisterGlobalFilters( GlobalFilterCollection filters )
 		{
+			Contract.Requires( filters != null );
+
 			filters.Add( new HandleErrorAttribute() );
 		}
 	}

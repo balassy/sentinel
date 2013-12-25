@@ -23,6 +23,11 @@ You can change the default folder which contains the galleries in the `web.confi
     </Sentinel>
 
 
+### Login with a single password
+
+Sentinel does not require a login name, but only a login password to access the galleries and the images. This makes sharing the images much easier for you, and also easier for your visitors to access them on a mobile device. 
+
+
 ### Gallery thumbnails
 
 When a gallery folder contains a `folder.jpg` file, Sentinel uses it as the thumbnail image for the gallery (just like in Windows Explorer).

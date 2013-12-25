@@ -18,5 +18,14 @@
 				return default( string );
 			}
 		}
+
+
+		public bool AutoGenerateThumbnails
+		{
+			get
+			{
+				return default( bool );
+			}
+		}
 	}
 }

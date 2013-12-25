@@ -35,5 +35,16 @@
 				return this.galleriesSection.StorageFolderVirtualPath;
 			}
 		}
+
+		/// <summary>
+		/// Gets a value indicating whether the gallery thumbnails should be automatically generated.
+		/// </summary>
+		public bool AutoGenerateThumbnails
+		{
+			get
+			{
+				return this.galleriesSection.AutoGenerateThumbnails;
+			}
+		}
 	}
 }

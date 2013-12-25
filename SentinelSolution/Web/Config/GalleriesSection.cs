@@ -19,5 +19,19 @@
 				return (string) this[ "storageFolderVirtualPath" ];
 			}
 		}
+
+
+		/// <summary>
+		/// Gets a value indicating whether the gallery thumbnails should be automatically generated.
+		/// </summary>
+		/// <value><c>True</c> if thumbnails should be automatically generated; otherwise, <c>false</c>.</value>
+		[ConfigurationProperty( "autoGenerateThumbnails", IsRequired = true, DefaultValue = true )]
+		public bool AutoGenerateThumbnails
+		{
+			get
+			{
+				return (bool) this[ "autoGenerateThumbnails" ];
+			}
+		}
 	}
 }

@@ -13,5 +13,10 @@
 		/// Gets the application realtive virtual path of the folder which contains the galleries.
 		/// </summary>
 		string StorageFolderVirtualPath { get; }
+
+		/// <summary>
+		/// Gets a value indicating whether the gallery thumbnails should be automatically generated.
+		/// </summary>
+		bool AutoGenerateThumbnails { get; }
 	}
 }

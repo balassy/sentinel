@@ -1,4 +1,6 @@
-﻿namespace Sentinel.Web.Services
+﻿using ImageResizer;
+
+namespace Sentinel.Web.Services
 {
 	using System;
 	using System.Collections.Generic;
@@ -53,10 +55,34 @@
 					// Get the full physical path of the gallery thumbnail image (eg. C:\inetpub\wwwroot\First\folder.jpg).
 					string thumbnailPhysicalPath = Path.Combine( folderPhysicalPath, "folder.jpg" );
 
-					// If the thumbnail file exists, use it, otherwise use the first image as the thumbnail image of the gallery.
-					thumbnailPhysicalPath = filePhysicalPaths.Contains( thumbnailPhysicalPath )
-						? thumbnailPhysicalPath
-						: filePhysicalPaths[ 0 ];
+					// If the thumbnail file does not exist, create it by resizing the first image and saving as "folder.jpg".
+					if( !filePhysicalPaths.Contains( thumbnailPhysicalPath ) )
+					{
+						if( ConfigService.AutoGenerateThumbnails )
+						{
+							Instructions instructions = new Instructions
+							{
+								Width = 80,
+								Height = 60,
+								Mode = FitMode.Max
+							};
+							ImageJob job = new ImageJob( filePhysicalPaths[ 0 ], thumbnailPhysicalPath, instructions );
+
+							try
+							{
+								job.Build();
+							}
+							catch
+							{
+								// In case of any error, use the first image as the thumbnail without resizing it.
+								thumbnailPhysicalPath = filePhysicalPaths[ 0 ];
+							}							
+						}
+						else
+						{
+							thumbnailPhysicalPath = filePhysicalPaths[ 0 ];
+						}
+					}
 
 					// Get the file name of the thumbnail (eg. folder.jpg or img1.jpg).
 					string thumbnailFileName = Path.GetFileName( thumbnailPhysicalPath );

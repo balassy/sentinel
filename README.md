@@ -1,8 +1,8 @@
 # Sentinel Gallery
 
-Sentinel aims to be simplest photo gallery that supports super-easy image publishing. 
+Sentinel is developed by [György Balássy](http://gyorgybalassy.wordpress.com) to create the simplest photo gallery that supports super-easy image publishing. 
 
-
+If you have any comments, questions, tips or ideas, do not hesitate to contact me via e-mail (balassy at aut.bme.hu) or Twitter ([@gyorgybalassy](http://twitter.com/gyorgybalassy)).
 
 
 
@@ -23,14 +23,14 @@ You can change the default folder which contains the galleries in the `web.confi
     </Sentinel>
 
 
-## Gallery thumbnails
+### Gallery thumbnails
 
 When a gallery folder contains a `folder.jpg` file, Sentinel uses it as the thumbnail image for the gallery (just like in Windows Explorer).
 
 If there is no `folder.jpg` file in the gallery folder, then the first image is used as the thumbnail.
 
 
-## Localization
+### Localization
 
 Sentinel supports multiple display languages. By default the site is displayed in English, but if the client requests another display language and localization is available, then Sentinel will display localized texts.
 
@@ -50,6 +50,7 @@ Sentinel is built using the following technologies:
 	* ASP.NET MVC 5
 	* ASP.NET Bundling and minification 
 	* Compiled MVC views
+	* Code contracts
 	* Custom configuration handlers
 	* Localization
 	* T4MVC
@@ -61,4 +62,8 @@ Sentinel is built using the following technologies:
 	* jQuery
 	* jQuery Validate
 	
+
+## About the author
+
+**György Balássy** is a software architect, speaker, author, teacher, ethical hacker from Budapest, Hungary. You can reach and follow him via his [blog](http://gyorgybalassy.wordpress.com) or his [@gyorgybalassy](http://twitter.com/gyorgybalassy) Twitter page.
 

@@ -1,25 +1,29 @@
-using System.Diagnostics.Contracts;
-using Sentinel.Web.Services;
+[assembly: WebActivator.PreApplicationStartMethod( typeof( Sentinel.Web.NinjectWebCommon ), "Start" )]
+[assembly: WebActivator.ApplicationShutdownMethodAttribute( typeof( Sentinel.Web.NinjectWebCommon ), "Stop" )]
 
-[assembly: WebActivator.PreApplicationStartMethod( typeof( Sentinel.Web.App_Start.NinjectWebCommon ), "Start" )]
-[assembly: WebActivator.ApplicationShutdownMethodAttribute( typeof( Sentinel.Web.App_Start.NinjectWebCommon ), "Stop" )]
-
-namespace Sentinel.Web.App_Start
+namespace Sentinel.Web
 {
 	using System;
+	using System.Diagnostics.Contracts;
 	using System.Web;
+	using Sentinel.Web.Services;
 
 	using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
 	using Ninject;
 	using Ninject.Web.Common;
 
+
+	/// <summary>
+	/// Encapsulates the details of setting up dependency injection when the application is started.
+	/// </summary>
 	public static class NinjectWebCommon
 	{
 		private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
+
 		/// <summary>
-		/// Starts the application
+		/// Starts the application.
 		/// </summary>
 		public static void Start()
 		{

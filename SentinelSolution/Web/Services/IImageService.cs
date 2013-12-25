@@ -1,5 +1,6 @@
 ﻿namespace Sentinel.Web.Services
 {
+	using System.Diagnostics.CodeAnalysis;
 	using System.Diagnostics.Contracts;
 	using Sentinel.Web.Models.Gallery;
 
@@ -14,6 +15,7 @@
 		/// Gets the list of the available galleries.
 		/// </summary>
 		/// <returns>The list of galleries.</returns>
+		[SuppressMessage( "Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "The method indicates more complex logic." )]
 		ViewGalleriesVM GetGalleries();
 
 

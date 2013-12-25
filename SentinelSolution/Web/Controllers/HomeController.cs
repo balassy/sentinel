@@ -1,6 +1,7 @@
 ﻿namespace Sentinel.Web.Controllers
 {
 	using System;
+	using System.Diagnostics.CodeAnalysis;
 	using System.Diagnostics.Contracts;
 	using System.Web.Mvc;
 	using Sentinel.Web.Models.Home;
@@ -22,7 +23,8 @@
 		}
 
 
-		public virtual ActionResult Login( string returnUrl )
+		[SuppressMessage( "Microsoft.Design", "CA1054:UriParametersShouldNotBeStrings", MessageId="0#", Justification = "Always used as a whole string, never parsed." )]
+		public virtual ActionResult LogOn( string returnUrl )
 		{
 			this.ViewBag.ReturnUrl = returnUrl;
 			return this.View();
@@ -31,7 +33,9 @@
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult Login( LoginVM model, string returnUrl )
+		[SuppressMessage( "Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "False alarm, because Code Analysis does not recognize Code Contracts." )]
+		[SuppressMessage( "Microsoft.Design", "CA1054:UriParametersShouldNotBeStrings", MessageId = "1#", Justification = "Always used as a whole string, never parsed." )]
+		public virtual ActionResult LogOn( LogOnVM model, string returnUrl )
 		{
 			Contract.Requires( model != null );
 
@@ -47,7 +51,7 @@
 				}
 				else
 				{
-					this.ModelState.AddModelError( String.Empty, LoginRes.InvalidCredentialsError );
+					this.ModelState.AddModelError( String.Empty, LogOnRes.InvalidCredentialsError );
 				}
 			}
 
@@ -59,11 +63,11 @@
 		[HttpPost]
 		[Authorize]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult Logoff()
+		public virtual ActionResult LogOff()
 		{
 			this.AuthenticationService.SignOut();
 
-			return this.RedirectToAction( MVC.Home.Login() );
+			return this.RedirectToAction( MVC.Home.LogOn() );
 		}
 
 	}

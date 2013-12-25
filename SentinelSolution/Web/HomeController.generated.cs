@@ -46,9 +46,9 @@ namespace Sentinel.Web.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult Login()
+        public virtual System.Web.Mvc.ActionResult LogOn()
         {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LogOn);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -67,24 +67,24 @@ namespace Sentinel.Web.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string Login = "Login";
-            public readonly string Logoff = "Logoff";
+            public readonly string LogOn = "LogOn";
+            public readonly string LogOff = "LogOff";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string Login = "Login";
-            public const string Logoff = "Logoff";
+            public const string LogOn = "LogOn";
+            public const string LogOff = "LogOff";
         }
 
 
-        static readonly ActionParamsClass_Login s_params_Login = new ActionParamsClass_Login();
+        static readonly ActionParamsClass_LogOn s_params_LogOn = new ActionParamsClass_LogOn();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Login LoginParams { get { return s_params_Login; } }
+        public ActionParamsClass_LogOn LogOnParams { get { return s_params_LogOn; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Login
+        public class ActionParamsClass_LogOn
         {
             public readonly string returnUrl = "returnUrl";
             public readonly string model = "model";
@@ -99,9 +99,9 @@ namespace Sentinel.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Login = "Login";
+                public readonly string LogOn = "LogOn";
             }
-            public readonly string Login = "~/Views/Home/Login.cshtml";
+            public readonly string LogOn = "~/Views/Home/LogOn.cshtml";
         }
     }
 
@@ -119,33 +119,33 @@ namespace Sentinel.Web.Controllers
             return callInfo;
         }
 
-        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string returnUrl);
+        partial void LogOnOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string returnUrl);
 
-        public override System.Web.Mvc.ActionResult Login(string returnUrl)
+        public override System.Web.Mvc.ActionResult LogOn(string returnUrl)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LogOn);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
-            LoginOverride(callInfo, returnUrl);
+            LogOnOverride(callInfo, returnUrl);
             return callInfo;
         }
 
-        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Sentinel.Web.Models.Home.LoginVM model, string returnUrl);
+        partial void LogOnOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Sentinel.Web.Models.Home.LogOnVM model, string returnUrl);
 
-        public override System.Web.Mvc.ActionResult Login(Sentinel.Web.Models.Home.LoginVM model, string returnUrl)
+        public override System.Web.Mvc.ActionResult LogOn(Sentinel.Web.Models.Home.LogOnVM model, string returnUrl)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LogOn);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
-            LoginOverride(callInfo, model, returnUrl);
+            LogOnOverride(callInfo, model, returnUrl);
             return callInfo;
         }
 
-        partial void LogoffOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void LogOffOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
-        public override System.Web.Mvc.ActionResult Logoff()
+        public override System.Web.Mvc.ActionResult LogOff()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Logoff);
-            LogoffOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LogOff);
+            LogOffOverride(callInfo);
             return callInfo;
         }
 

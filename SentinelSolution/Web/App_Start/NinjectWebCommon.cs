@@ -4,6 +4,7 @@
 namespace Sentinel.Web
 {
 	using System;
+	using System.Diagnostics.CodeAnalysis;
 	using System.Diagnostics.Contracts;
 	using System.Web;
 	using Sentinel.Web.Services;
@@ -17,6 +18,7 @@ namespace Sentinel.Web
 	/// <summary>
 	/// Encapsulates the details of setting up dependency injection when the application is started.
 	/// </summary>
+	[SuppressMessage( "Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Ninject", Justification = "Project name." )]
 	public static class NinjectWebCommon
 	{
 		private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -44,6 +46,7 @@ namespace Sentinel.Web
 		/// Creates the kernel that will manage your application.
 		/// </summary>
 		/// <returns>The created kernel.</returns>
+		[SuppressMessage( "Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "False alarm." )]
 		private static IKernel CreateKernel()
 		{
 			var kernel = new StandardKernel();

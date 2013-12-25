@@ -1,5 +1,6 @@
 ﻿namespace Sentinel.Web
 {
+	using System.Diagnostics.CodeAnalysis;
 	using System.Diagnostics.Contracts;
 	using System.Web.Optimization;
 
@@ -10,7 +11,7 @@
 	/// <remarks>
 	/// For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
 	/// </remarks>
-	public class BundleConfig
+	public static class BundleConfig
 	{
 		// 
 		/// <summary>
@@ -20,6 +21,7 @@
 		/// <remarks>
 		/// NOTE: The ~/bundles URI segment is used in all bundle URIs to represent the ~/Static folder which contains the CSS and JavaScript files.
 		/// </remarks>
+		[SuppressMessage( "Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "False alarm, because Code Analysis does not recognize Code Contracts." )]
 		public static void RegisterBundles( BundleCollection bundles )
 		{
 			Contract.Requires( bundles != null );

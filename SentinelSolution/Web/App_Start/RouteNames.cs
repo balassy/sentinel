@@ -13,12 +13,12 @@
 		/// <summary>
 		/// The name of the route that logs in the user.
 		/// </summary>
-		public const string Login = "Login";
+		public const string LogOn = "LogOn";
 
 		/// <summary>
 		/// The name of the route that logs off the user.
 		/// </summary>
-		public const string Logoff = "Logoff";
+		public const string LogOff = "LogOff";
 
 		/// <summary>
 		/// The name of the route that lists the galleries.

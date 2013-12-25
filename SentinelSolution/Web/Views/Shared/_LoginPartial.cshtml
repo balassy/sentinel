@@ -1,8 +1,0 @@
-﻿@using Sentinel.Web.Resources.Shared
-
-@using (Html.BeginForm( MVC.Home.Logoff(), FormMethod.Post, new { id = "logoutForm" }))
-{
-	@Html.AntiForgeryToken()
-	<a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default navbar-btn pull-right">@LoginPartialRes.Logoff</a>
-}
-

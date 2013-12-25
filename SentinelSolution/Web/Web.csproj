@@ -64,6 +64,7 @@
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -211,6 +212,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\RouteNames.cs" />
     <Compile Include="Config\GalleriesSection.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Resources\Gallery\ViewGalleriesRes.Designer.cs">
       <DependentUpon>ViewGalleriesRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -231,25 +233,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ViewGalleryRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Home\LoginRes.hu.Designer.cs">
-      <DependentUpon>LoginRes.hu.resx</DependentUpon>
+    <Compile Include="Resources\Home\LogOnRes.hu.Designer.cs">
+      <DependentUpon>LogOnRes.hu.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Home\LoginRes.Designer.cs">
+    <Compile Include="Resources\Home\LogOnRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LoginRes.resx</DependentUpon>
+      <DependentUpon>LogOnRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Shared\LoginPartialRes.hu.Designer.cs">
-      <DependentUpon>LoginPartialRes.hu.resx</DependentUpon>
+    <Compile Include="Resources\Shared\LogOnPartialRes.hu.Designer.cs">
+      <DependentUpon>LogOnPartialRes.hu.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\Shared\LoginPartialRes.Designer.cs">
+    <Compile Include="Resources\Shared\LogOnPartialRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LoginPartialRes.resx</DependentUpon>
+      <DependentUpon>LogOnPartialRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\AuthenticationService.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
@@ -265,7 +267,7 @@
     </Compile>
     <Compile Include="Models\Gallery\ViewGalleryVM.cs" />
     <Compile Include="Models\Gallery\ViewGalleriesVM.cs" />
-    <Compile Include="Models\Home\LoginVM.cs" />
+    <Compile Include="Models\Home\LogOnVM.cs" />
     <Compile Include="Models\Gallery\ViewGallerySummaryVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthenticationServiceContract.cs" />
@@ -337,8 +339,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Static\lib\jquery-1.10.2.min.map" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\LogOn.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Gallery\ViewGalleries.cshtml" />
     <Content Include="Static\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Static\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
@@ -373,21 +375,23 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ViewGalleryRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Home\LoginRes.hu.resx">
+    <EmbeddedResource Include="Resources\Home\LogOnRes.hu.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LoginRes.hu.Designer.cs</LastGenOutput>
+      <LastGenOutput>LogOnRes.hu.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Home\LoginRes.resx">
+    <EmbeddedResource Include="Resources\Home\LogOnRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LoginRes.Designer.cs</LastGenOutput>
+      <LastGenOutput>LogOnRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Shared\LoginPartialRes.hu.resx">
+    <EmbeddedResource Include="Resources\Shared\LogOnPartialRes.hu.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LoginPartialRes.hu.Designer.cs</LastGenOutput>
+      <LastGenOutput>LogOnPartialRes.hu.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Shared\LoginPartialRes.resx">
+    <EmbeddedResource Include="Resources\Shared\LogOnPartialRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LoginPartialRes.Designer.cs</LastGenOutput>
+      <LastGenOutput>LogOnPartialRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

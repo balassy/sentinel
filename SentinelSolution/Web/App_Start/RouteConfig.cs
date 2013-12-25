@@ -7,7 +7,7 @@
 	/// <summary>
 	/// Encapsulates the details of setting up the routing.
 	/// </summary>
-	public class RouteConfig
+	public static class RouteConfig
 	{
 		/// <summary>
 		/// Registers all routes for the site.
@@ -17,8 +17,8 @@
 		{
 			routes.IgnoreRoute( "{resource}.axd/{*pathInfo}" );
 
-			routes.MapRoute( RouteNames.Login, "Login", MVC.Home.Login() );
-			routes.MapRoute( RouteNames.Logoff, "Logoff", MVC.Home.Logoff() );
+			routes.MapRoute( RouteNames.LogOn, "LogOn", MVC.Home.LogOn() );
+			routes.MapRoute( RouteNames.LogOff, "LogOff", MVC.Home.LogOff() );
 			routes.MapRoute( RouteNames.ViewGalleries, "Galleries", MVC.Gallery.ViewGalleries() );
 			routes.MapRoute( RouteNames.ViewGallery, "Galleries/{folderName}", MVC.Gallery.ViewGallery() );
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,8 +9,10 @@ using System.Web.Routing;
 
 namespace Sentinel.Web
 {
+	[SuppressMessage( "Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Mvc", Justification = "De facto standard name for the application class." )]
 	public class MvcApplication : System.Web.HttpApplication
 	{
+		[SuppressMessage( "Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Convention-based configuration." )]
 		protected void Application_Start()
 		{
 			AreaRegistration.RegisterAllAreas();

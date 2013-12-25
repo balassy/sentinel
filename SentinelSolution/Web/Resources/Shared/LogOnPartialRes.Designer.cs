@@ -22,14 +22,14 @@ namespace Sentinel.Web.Resources.Shared {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class LoginPartialRes {
+    public class LogOnPartialRes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LoginPartialRes() {
+        internal LogOnPartialRes() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Sentinel.Web.Resources.Shared {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sentinel.Web.Resources.Shared.LoginPartialRes", typeof(LoginPartialRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sentinel.Web.Resources.Shared.LogOnPartialRes", typeof(LogOnPartialRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,9 @@ namespace Sentinel.Web.Resources.Shared {
         /// <summary>
         ///   Looks up a localized string similar to Sign out.
         /// </summary>
-        public static string Logoff {
+        public static string LogOff {
             get {
-                return ResourceManager.GetString("Logoff", resourceCulture);
+                return ResourceManager.GetString("LogOff", resourceCulture);
             }
         }
     }

@@ -63,6 +63,13 @@ Sentinel is built using the following technologies:
 	* jQuery Validate
 	
 
+## Licensing
+
+You are free to use this source code for anything you want, however please note that the code is provided as-is, without any warranty or support.
+
+If you like or use this project, please be so kind and drop me a message about it. 
+
+
 ## About the author
 
 **György Balássy** is a software architect, speaker, author, teacher, ethical hacker from Budapest, Hungary. You can reach and follow him via his [blog](http://gyorgybalassy.wordpress.com) or his [@gyorgybalassy](http://twitter.com/gyorgybalassy) Twitter page.

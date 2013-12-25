@@ -41,6 +41,13 @@ Sentinel relies on the language detection mechanism of ASP.NET to select the dis
     <globalization culture="auto" uiCulture="auto" ... />
 
 
+### Responsive design and touch support
+
+Sentinel uses responsive design and supports touch navigation, to correctly display your galleries and images on devices with different form factors. 
+
+Note however, that currently Sentinel neither resize nor optimize the images for smaller displays and slower  or metered network connections, and always the full image files are downloaded!
+ 
+
 ## Installation
 
 Build and publish the source code. The default login password is `demo`. You can change it in the following section in the `web.config` file by setting the SHA1 hash of your desired password:

@@ -2,18 +2,26 @@
 
 Sentinel aims to be simplest photo gallery that supports super-easy image publishing. 
 
+
+
+
+
 ## Features
+
 
 ### Simple publishing
 
 Just create a separate folder for each of your galleries in the `Photos` folder, and then add your JPG and PNG images to it.
 Sentinel will automatically list the folders as galleries, and displays the image files in them.
 
-You can change the default folder which contains the galleries in the `web.config` file:
+You can add new galleries any time without recompiling and republishing the website. Create a new folder, add your images to it and you are done!
 
-    &lt;Sentinel&gt;
-        &lt;Galleries storageFolderVirtualPath="~/Photos" /&gt;
-    &lt;/Sentinel&gt;
+You can change the default folder which contains the galleries in the `web.config` file.
+
+    <Sentinel>
+        <Galleries storageFolderVirtualPath="~/Photos" />
+    </Sentinel>
+
 
 ## Gallery thumbnails
 
@@ -21,9 +29,17 @@ When a gallery folder contains a `folder.jpg` file, Sentinel uses it as the thum
 
 If there is no `folder.jpg` file in the gallery folder, then the first image is used as the thumbnail.
 
+
 ## Localization
 
-Sentinel supports multiple display languages.
+Sentinel supports multiple display languages. By default the site is displayed in English, but if the client requests another display language and localization is available, then Sentinel will display localized texts.
+
+Currently only Hungarian localization is provided, but you can add support for new languages by translating the `.resx` files in the `Resources` folder.
+
+Sentinel relies on the language detection mechanism of ASP.NET to select the display language. To turn of automatic language detection and force a selected language, modify te `web.config` file:
+
+    <globalization culture="auto" uiCulture="auto" ... />
+
 
 
 ## Technology showcase
@@ -32,6 +48,7 @@ Sentinel is built using the following technologies:
 
 * Server-side:
 	* ASP.NET MVC 5
+	* ASP.NET Bundling and minification 
 	* Compiled MVC views
 	* Custom configuration handlers
 	* Localization
@@ -43,5 +60,5 @@ Sentinel is built using the following technologies:
 	* LESS
 	* jQuery
 	* jQuery Validate
-	* ASP.NET bundling and minification
+	
 

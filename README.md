@@ -41,6 +41,13 @@ Sentinel relies on the language detection mechanism of ASP.NET to select the dis
     <globalization culture="auto" uiCulture="auto" ... />
 
 
+## Installation
+
+Build and publish the source code. The default login password is `demo`. You can change it in the following section in the `web.config` file by setting the SHA1 hash of your desired password:
+
+    <user name="demo" password="89e495e7941cf9e40e6980d14a16bf023ccd4c91" /> 
+
+
 
 ## Technology showcase
 

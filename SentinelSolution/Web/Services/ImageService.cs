@@ -27,7 +27,7 @@
 		{
 			ViewGalleriesVM model = new ViewGalleriesVM
 			{
-				Series = new List<SeriesVM>()
+				Galleries = new List<ViewGallerySummaryVM>()
 			};
 
 			// Get the full physical path of the folder which contains the galleries (eg. C:\inetpub\wwwroot\Photos).
@@ -65,13 +65,13 @@
 					string thumbnailVirtualPath = Path.Combine( Path.Combine( this.ConfigService.StorageFolderVirtualPath, folderName ), thumbnailFileName );
 
 					// Build the returned model item for the gallery.
-					SeriesVM series = new SeriesVM
+					ViewGallerySummaryVM gallery = new ViewGallerySummaryVM
 					{
 						FolderName = folderName,
 						Count = filePhysicalPaths.Length,
 						ThumbnailUrl = thumbnailVirtualPath
 					};
-					model.Series.Add( series );
+					model.Galleries.Add( gallery );
 				}
 			}
 

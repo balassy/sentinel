@@ -18,17 +18,17 @@
 		<h1>@ViewGalleriesRes.PageHeading</h1>
 	</div>
 		
-	@foreach( SeriesVM series in Model.Series )
+	@foreach( ViewGallerySummaryVM gallery in Model.Galleries )
 	{
 		<div class="media">
-			<a class="pull-left" href="@Url.Action( MVC.Gallery.ViewGallery( series.FolderName ) )">
-				<img class="media-object my-thumbnail" src="@Url.Content( series.ThumbnailUrl )" alt="@series.FolderName" />
+			<a class="pull-left" href="@Url.Action( MVC.Gallery.ViewGallery( gallery.FolderName ) )">
+				<img class="media-object my-thumbnail" src="@Url.Content( gallery.ThumbnailUrl )" alt="@gallery.FolderName" />
 			</a>
 			<div class="media-body">
 				<h4 class="media-heading">
-					@Html.ActionLink( series.FolderName, MVC.Gallery.ViewGallery( series.FolderName ) )
+					@Html.ActionLink( gallery.FolderName, MVC.Gallery.ViewGallery( gallery.FolderName ) )
 				</h4>
-				<span class="badge">@series.Count @ViewGalleriesRes.ImageCount</span>
+				<span class="badge">@gallery.Count @ViewGalleriesRes.ImageCount</span>
 			</div>
 		</div>			
 	}		

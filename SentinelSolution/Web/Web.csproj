@@ -266,7 +266,7 @@
     <Compile Include="Models\Gallery\ViewGalleryVM.cs" />
     <Compile Include="Models\Gallery\ViewGalleriesVM.cs" />
     <Compile Include="Models\Home\LoginVM.cs" />
-    <Compile Include="Models\Gallery\SeriesVM.cs" />
+    <Compile Include="Models\Gallery\ViewGallerySummaryVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthenticationServiceContract.cs" />
     <Compile Include="Services\ConfigService.cs" />

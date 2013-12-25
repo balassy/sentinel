@@ -8,6 +8,6 @@
 	/// </summary>
 	public class ViewGalleriesVM
 	{
-		public List<SeriesVM> Series { get; set; }		
+		public List<ViewGallerySummaryVM> Galleries { get; set; }		
 	}
 }

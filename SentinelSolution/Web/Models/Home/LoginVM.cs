@@ -1,12 +1,17 @@
-﻿using Sentinel.Web.Resources.Home;
-
-namespace Sentinel.Web.Models.Home
+﻿namespace Sentinel.Web.Models.Home
 {
 	using System.ComponentModel.DataAnnotations;
+	using Sentinel.Web.Resources.Home;
 
 
+	/// <summary>
+	/// The view-model for the login page.
+	/// </summary>
 	public class LoginVM
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="LoginVM"/> class.
+		/// </summary>
 		public LoginVM()
 		{
 			// NOTE: If you want to use multiple users, remove this constructor.

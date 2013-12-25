@@ -1,13 +1,25 @@
-﻿using System.Diagnostics.Contracts;
-
-namespace Sentinel.Web
+﻿namespace Sentinel.Web
 {
+	using System.Diagnostics.Contracts;
 	using System.Web.Optimization;
 
 
+	/// <summary>
+	/// Encapsulates the details of setting up the bundling and minification of the JavaScript and CSS files.
+	/// </summary>
+	/// <remarks>
+	/// For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+	/// </remarks>
 	public class BundleConfig
 	{
-		// For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+		// 
+		/// <summary>
+		/// Registers the CSS and JavaScript bundles.
+		/// </summary>
+		/// <param name="bundles">The collection of the bundles to extend.</param>
+		/// <remarks>
+		/// NOTE: The ~/bundles URI segment is used in all bundle URIs to represent the ~/Static folder which contains the CSS and JavaScript files.
+		/// </remarks>
 		public static void RegisterBundles( BundleCollection bundles )
 		{
 			Contract.Requires( bundles != null );

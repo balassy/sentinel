@@ -3,6 +3,9 @@
 	using System.Configuration;
 
 
+	/// <summary>
+	/// Represents the <c>Virgo/Galleries</c> section in the configuration file.
+	/// </summary>
 	public class GalleriesSection : ConfigurationSection
 	{
 		/// <summary>

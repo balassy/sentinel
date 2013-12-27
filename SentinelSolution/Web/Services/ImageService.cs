@@ -40,13 +40,14 @@
 			// Enumerate the galleries.
 			foreach( string folderPhysicalPath in folderPhysicalPaths )
 			{
-				// Get the full physical paths of the image files in the gallery (eg. list of C:\inetpub\wwwroot\Photos\First\img1.jpg, C:\inetpub\wwwroot\Photos\First\img2.jpg etc.).
-				string[] filePhysicalPaths = Directory.GetFiles( folderPhysicalPath, "*.*" )
-					.Where( p => p.EndsWith( ".jpg", StringComparison.OrdinalIgnoreCase ) || p.EndsWith( ".png", StringComparison.OrdinalIgnoreCase ) )
-					.ToArray();
+				// Get the names of the image files in the requested folder.
+				IEnumerable<string> imageFileNames = this.GetImageFiles( folderPhysicalPath );
+
+				// Get the number of images in the requested folder.
+				int imageCount = imageFileNames.Count();
 
 				// If there is at least one image in the gallery.
-				if( filePhysicalPaths.Length > 0 )
+				if( imageCount > 0 )
 				{
 					// Get the name of the gallery folder (eg. First).
 					string folderName = Path.GetFileName( folderPhysicalPath );
@@ -55,8 +56,10 @@
 					string thumbnailPhysicalPath = Path.Combine( folderPhysicalPath, "folder.jpg" );
 
 					// If the thumbnail file does not exist, create it by resizing the first image and saving as "folder.jpg".
-					if( !filePhysicalPaths.Contains( thumbnailPhysicalPath ) )
+					if( !File.Exists( thumbnailPhysicalPath ) )
 					{
+						string firstImagePhysicalPath = Path.Combine( folderPhysicalPath, imageFileNames.First() );
+
 						if( ConfigService.AutoGenerateThumbnails )
 						{
 							Instructions instructions = new Instructions
@@ -65,7 +68,7 @@
 								Height = 60,
 								Mode = FitMode.Max
 							};
-							ImageJob job = new ImageJob( filePhysicalPaths[ 0 ], thumbnailPhysicalPath, instructions );
+							ImageJob job = new ImageJob( firstImagePhysicalPath, thumbnailPhysicalPath, instructions );
 
 							try
 							{
@@ -74,12 +77,12 @@
 							catch
 							{
 								// In case of any error, use the first image as the thumbnail without resizing it.
-								thumbnailPhysicalPath = filePhysicalPaths[ 0 ];
+								thumbnailPhysicalPath = firstImagePhysicalPath;
 							}							
 						}
 						else
 						{
-							thumbnailPhysicalPath = filePhysicalPaths[ 0 ];
+							thumbnailPhysicalPath = firstImagePhysicalPath;
 						}
 					}
 
@@ -93,7 +96,7 @@
 					ViewGallerySummaryVM gallery = new ViewGallerySummaryVM
 					{
 						FolderName = folderName,
-						Count = filePhysicalPaths.Length,
+						Count = imageCount,
 						ThumbnailUrl = thumbnailVirtualPath
 					};
 					model.Galleries.Add( gallery );
@@ -143,11 +146,8 @@
 				throw new ArgumentOutOfRangeException( "folderName", "Invalid folder name!" );
 			}
 
-			// Enumerate all files in the requested folder.
-			IEnumerable<string> allFileNames = Directory.GetFiles( folderPhysicalPath, "*.*" ).Select( Path.GetFileName );
-
-			// Filter the file name list to image files except thumbnail files.
-			IEnumerable<string> imageFileNames = allFileNames.Where( p => ( p.EndsWith( ".jpg", StringComparison.OrdinalIgnoreCase ) || p.EndsWith( ".png", StringComparison.OrdinalIgnoreCase ) ) && !p.EndsWith( "folder.jpg", StringComparison.OrdinalIgnoreCase ) && !p.StartsWith( "th_", StringComparison.OrdinalIgnoreCase ) );
+			// Get the names of the image files in the requested folder.
+			IEnumerable<string> imageFileNames = this.GetImageFiles( folderPhysicalPath );
 
 			List<ViewGalleryImageVM> images = new List<ViewGalleryImageVM>();
 
@@ -204,5 +204,21 @@
 
 			return model;
 		}
+
+
+		/// <summary>
+		/// Gets the names of the image files in the specified folder.
+		/// </summary>
+		/// <param name="folderPhysicalPath">The full physical path of the folder to query.</param>
+		/// <returns>The list of image file names.</returns>
+		private IEnumerable<string> GetImageFiles( string folderPhysicalPath )
+		{
+			// Enumerate all files in the requested folder.
+			IEnumerable<string> allFileNames = Directory.GetFiles( folderPhysicalPath, "*.*" ).Select( Path.GetFileName );
+
+			// Filter the file name list to image files except thumbnail files.
+			return allFileNames.Where( p => ( p.EndsWith( ".jpg", StringComparison.OrdinalIgnoreCase ) || p.EndsWith( ".png", StringComparison.OrdinalIgnoreCase ) ) && !p.EndsWith( "folder.jpg", StringComparison.OrdinalIgnoreCase ) && !p.StartsWith( "th_", StringComparison.OrdinalIgnoreCase ) );			
+		}
+
 	}
 }

@@ -1,5 +1,6 @@
-﻿@using Sentinel.Web.Resources.Gallery
-@model Sentinel.Web.Models.Gallery.ViewGalleryVM
+﻿@using Sentinel.Web.Models.Gallery
+@using Sentinel.Web.Resources.Gallery
+@model ViewGalleryVM
 
 @{
 	ViewBag.Title = this.Model.Title;
@@ -12,16 +13,29 @@
 	</div>
 </nav>
 
-<div class="container">
+<div id="ViewGalleryPage" class="container">
 	<div class="page-header">
 		<h1>@Model.Title</h1>
 	</div>
 
-	@foreach( string photoUrl in Model.PhotoUrls )
-	{
-		<p>
-			<a href="@Url.Content( photoUrl )" target="_blank"><img src="@Url.Content( photoUrl )" class="img-responsive" title="@photoUrl" /></a>
-		</p>
-	}
+	<div id="gallery">
+		@foreach( ViewGalleryImageVM image in Model.Images )
+		{
+			<a href="#" data-full="@Url.Content( image.ImageUrl )">
+				<img src="@Url.Content( image.ThumbnailUrl )" />
+			</a>
+		}
+	</div>
 
+	<div id="preview" style="display: none;">
+		<a href="#">
+			<img class="img-responsive" />
+		</a>
+	</div>
 </div> <!-- /container -->
+
+
+@section PageScripts
+{
+	@Scripts.Render( "~/bundles/js/ViewGalleryPage" );
+}

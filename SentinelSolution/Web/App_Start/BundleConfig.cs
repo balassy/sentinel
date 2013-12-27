@@ -26,6 +26,9 @@
 		{
 			Contract.Requires( bundles != null );
 
+			// Always enable bundling and minification to ensure it does not break in production environment.
+			BundleTable.EnableOptimizations = true;
+
 			bundles.Add( new ScriptBundle( "~/bundles/jquery" ).Include(
 									"~/Static/lib/jquery-{version}.js" ) );
 
@@ -43,6 +46,9 @@
 
 			bundles.Add( new StyleBundle( "~/bundles/css" ).Include(
 								"~/Static/css/my.css" ) );
+
+			// Page-specific bundles.
+			bundles.Add( new ScriptBundle( "~/bundles/js/ViewGalleryPage" ).Include( "~/Static/js/ViewGalleryPage.js" ) );
 		}
 	}
 }

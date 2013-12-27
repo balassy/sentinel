@@ -216,6 +216,7 @@
     <Compile Include="App_Start\RouteNames.cs" />
     <Compile Include="Config\GalleriesSection.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Models\Gallery\ViewGalleryImageVM.cs" />
     <Compile Include="Resources\Gallery\ViewGalleriesRes.Designer.cs">
       <DependentUpon>ViewGalleriesRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -311,6 +312,7 @@
     <Content Include="Photos\Third\img3.jpg" />
     <Content Include="Photos\Third\img4.jpg" />
     <Content Include="Photos\Third\img1.jpg" />
+    <Content Include="Static\js\ViewGalleryPage.js" />
     <Content Include="Static\lib\jquery-1.10.2.js" />
     <Content Include="Static\lib\jquery-1.10.2.min.js" />
     <None Include="Static\lib\jquery.validate-vsdoc.js" />

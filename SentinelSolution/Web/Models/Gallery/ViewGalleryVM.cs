@@ -13,6 +13,6 @@
 
 		[SuppressMessage( "Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Required by ASP.NET MVC model binding." )]
 		[SuppressMessage( "Microsoft.Design", "CA1002:DoNotExposeGenericLists", Justification = "This view-model class is sealed to prevent inheritance." )]
-		public List<string> PhotoUrls { get; set; }		
+		public List<ViewGalleryImageVM> Images { get; set; }		
 	}
 }

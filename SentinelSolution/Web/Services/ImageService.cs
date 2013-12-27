@@ -1,6 +1,4 @@
-﻿using ImageResizer;
-
-namespace Sentinel.Web.Services
+﻿namespace Sentinel.Web.Services
 {
 	using System;
 	using System.Collections.Generic;
@@ -9,6 +7,7 @@ namespace Sentinel.Web.Services
 	using System.Web;
 	using Sentinel.Web.Models.Gallery;
 
+	using ImageResizer;
 	using Ninject;
 
 
@@ -144,17 +143,63 @@ namespace Sentinel.Web.Services
 				throw new ArgumentOutOfRangeException( "folderName", "Invalid folder name!" );
 			}
 
-			// Enumerate the image files in the requested folder (except the thumbnail image).
-			List<string> photoUrls = Directory.GetFiles( folderPhysicalPath, "*.*" )
-				.Where( p => ( p.EndsWith( ".jpg", StringComparison.OrdinalIgnoreCase ) || p.EndsWith( ".png", StringComparison.OrdinalIgnoreCase ) ) && !p.EndsWith( "folder.jpg", StringComparison.OrdinalIgnoreCase ) )
-				.Select( filePhysicalPath => Path.Combine( folderVirtualPath, Path.GetFileName( filePhysicalPath ) ) )
-				.ToList();
+			// Enumerate all files in the requested folder.
+			IEnumerable<string> allFileNames = Directory.GetFiles( folderPhysicalPath, "*.*" ).Select( Path.GetFileName );
+
+			// Filter the file name list to image files except thumbnail files.
+			IEnumerable<string> imageFileNames = allFileNames.Where( p => ( p.EndsWith( ".jpg", StringComparison.OrdinalIgnoreCase ) || p.EndsWith( ".png", StringComparison.OrdinalIgnoreCase ) ) && !p.EndsWith( "folder.jpg", StringComparison.OrdinalIgnoreCase ) && !p.StartsWith( "th_", StringComparison.OrdinalIgnoreCase ) );
+
+			List<ViewGalleryImageVM> images = new List<ViewGalleryImageVM>();
+
+			// Ensure that all image has thumbnails.
+			foreach( string imageFileName in imageFileNames )
+			{
+				string thumbnailFileName = "th_" + imageFileName;
+				string thumbnailPhysicalPath = Path.Combine( folderPhysicalPath, thumbnailFileName );
+
+				// Create the thumbnail if it does not exist.
+				if( !File.Exists( thumbnailPhysicalPath ) )
+				{
+					string imagePhysicalPath = Path.Combine( folderPhysicalPath, imageFileName );
+
+					if( ConfigService.AutoGenerateThumbnails )
+					{
+						Instructions instructions = new Instructions
+						{
+							Width = 80,
+							Height = 60,
+							Mode = FitMode.Max
+						};
+						ImageJob job = new ImageJob( imagePhysicalPath, thumbnailPhysicalPath, instructions );
+
+						try
+						{
+							job.Build();
+						}
+						catch
+						{
+							// In case of any error, use the original image as the thumbnail without resizing it.
+							thumbnailFileName = imageFileName;
+						}
+					}
+					else
+					{
+						thumbnailFileName = imageFileName;
+					}					
+				}
+
+				images.Add( new ViewGalleryImageVM
+				{
+					ThumbnailUrl = Path.Combine( folderVirtualPath, thumbnailFileName ),
+					ImageUrl = Path.Combine( folderVirtualPath, imageFileName )
+				} );
+			}
 
 			// Build the returned model.
 			ViewGalleryVM model = new ViewGalleryVM
 			{
 				Title = folderName,
-				PhotoUrls = photoUrls
+				Images = images
 			};
 
 			return model;

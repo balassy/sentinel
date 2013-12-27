@@ -123,6 +123,7 @@ namespace Links
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string _references_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/_references.min.js") ? Url("_references.min.js") : Url("_references.js");
+            public static readonly string ViewGalleryPage_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ViewGalleryPage.min.js") ? Url("ViewGalleryPage.min.js") : Url("ViewGalleryPage.js");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

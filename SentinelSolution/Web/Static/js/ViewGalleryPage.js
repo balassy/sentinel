@@ -7,6 +7,7 @@ $(function () {
 
 	$('#gallery a').click(function () {
 		var fullUrl = $(this).data('full');
+		$previewImg.attr('src', '' );
 		$gallery.slideUp();
 		$previewImg.attr('src', fullUrl);
 		$preview.slideDown();
